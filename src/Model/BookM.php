@@ -167,7 +167,8 @@ class BookM
      */
     public function getPresentGenreAndAuthorList(): array
     {
-        $sql = "SELECT author, `genre` FROM `books`";
+        $sql = "SELECT b.author, g.genre, g.id FROM `books` as b
+        INNER JOIN genre as g ON g.id = b.genre";
         $stmt = $this->_conn->prepare($sql);
         $stmt->execute();
         $res = $stmt->get_result();
@@ -863,9 +864,10 @@ class BookM
             $bookAuthorData = null;
         }
 
-        $sql = "SELECT * FROM `books` 
-        WHERE book_name LIKE ? OR author LIKE ? OR genre LIKE ? 
-        ORDER BY upload_date DESC";
+        $sql = "SELECT b.*, g.genre as genre_name FROM `books` as b
+        INNER JOIN genre as g ON g.id = b.genre
+        WHERE b.book_name LIKE ? OR b.author LIKE ? OR b.genre LIKE ? 
+        ORDER BY b.upload_date DESC";
         $stmt = $this->_conn->prepare($sql);
         $stmt->bind_param("sss", $bookNameData, $bookAuthorData, $bookCatData);
         $stmt->execute();

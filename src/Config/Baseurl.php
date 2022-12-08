@@ -32,7 +32,7 @@ class Baseurl
      */
     public function getBaseurl():string
     {
-        $baseurl = 'http://localhost/bookXchange/web/';
+        $baseurl = 'http://localhost/bookXchange/';
         return $baseurl;
     }
 }

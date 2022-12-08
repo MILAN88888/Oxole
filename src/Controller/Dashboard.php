@@ -58,7 +58,6 @@ class Dashboard
     {
         
         $genreAndAuthorList = $this->bookM->getPresentGenreAndAuthorList();
-        $genreAndAuthorList = $this->bookM->getPresentGenreAndAuthorList();
         $bookRecentBook = $this->bookM->getRecentBook($session);
         $mostPopularBook = $this->bookM->getMostPopularBook($session);
         $mostUniqueGenre = $this->bookM->getMostUniqueGenre($session);

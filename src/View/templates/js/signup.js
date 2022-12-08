@@ -103,14 +103,14 @@ $(document).ready(function () {
 });
 
 $(document).ready(function(){
-	const phone = document.querySelector("#phone");
-	var ini = window.intlTelInput(phone, {
-		separateDialCode: true,
-		preferredCountries: ["in", "co", "us", "de", "np"],
-		hiddenInput: "full",
-		utilsScript:
-			"templates/build/js/utils.js",
-	});
+// 	const phone = document.querySelector("#phone");
+// 	var ini = window.intlTelInput(phone, {
+// 		separateDialCode: true,
+// 		preferredCountries: ["in", "co", "us", "de", "np"],
+// 		hiddenInput: "full",
+// 		utilsScript:
+// 			"templates/build/js/utils.js",
+// 	});
 	$('form').submit(function () {
 
 		var full_number = ini.getNumber();

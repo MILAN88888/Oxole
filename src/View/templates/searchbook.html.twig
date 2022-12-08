@@ -17,7 +17,7 @@
                           {% for book in genreAndAuthorList %}
 
                           {% if book.genre not in newArray %}
-                          <option value="{{book.genre}}">{{book.genre}}</option>
+                          <option value="{{book.id}}">{{book.genre}}</option>
                           {% set newArray = newArray|merge([book.genre]) %}
                           {% endif %}
 

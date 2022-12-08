@@ -71,7 +71,7 @@ class Book
             'bookView.html.twig',
             ['session'=>$session,
             'bookdetail'=>$bookdetail,'allbookfeedback'=>$allfeedback,
-             'bookListByIsbn'=>$bookListByisbn]
+             'bookListByIsbn'=>$bookListByisbn,'bookFav'=>$bookFav]
         );
     }
 
