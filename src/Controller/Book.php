@@ -58,6 +58,7 @@ class Book
      */
     public function getViewBook(int $id, int $session)
     {
+        $genreAndAuthorList = $this->bookM->getPresentGenreAndAuthorList();
         $bookdetail = $this->bookM->getBookDetails($id);
         $bookFav = $this->bookM->getBookFav($id, $session);
         $allfeedback = $this->bookM->allBookFeedback($id);
@@ -71,7 +72,8 @@ class Book
             'bookView.html.twig',
             ['session'=>$session,
             'bookdetail'=>$bookdetail,'allbookfeedback'=>$allfeedback,
-             'bookListByIsbn'=>$bookListByisbn,'bookFav'=>$bookFav]
+             'bookListByIsbn'=>$bookListByisbn,'bookFav'=>$bookFav,
+             'genreAndAuthorList'=>$genreAndAuthorList]
         );
     }
 

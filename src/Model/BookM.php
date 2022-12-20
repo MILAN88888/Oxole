@@ -210,18 +210,20 @@ class BookM
         if ($session != 0) {
             $lang = $this->userLang($session);
             $langIds = implode(",", $lang);
-            $sql = "SELECT *,count(r.book_id) as bookc FROM books 
+            $sql = "SELECT b.*,count(r.book_id) as bookc, g.genre as ggenre  FROM books as b
             INNER JOIN (SELECT book_id FROM request) as r
-            on r.book_id = id
-            WHERE book_lang IN ($langIds) 
-            GROUP BY book_id 
-            ORDER BY count(*) DESC, book_id";
+            on r.book_id = b.id
+            LEFT JOIN genre as g on g.id = b.genre
+            WHERE b.book_lang IN ($langIds) 
+            GROUP BY r.book_id 
+            ORDER BY count(*) DESC, r.book_id";
         } else {
-            $sql = "SELECT *,count(r.book_id) as bookc FROM books 
+            $sql = "SELECT b.*,count(r.book_id) as bookc , g.genre as ggenre FROM books as b
             INNER JOIN (SELECT book_id FROM request) as r
-            on r.book_id = id  
-            GROUP BY book_id 
-            ORDER BY count(*) DESC, book_id";
+            on r.book_id = b.id
+            LEFT JOIN genre as g on g.id = b.genre
+            GROUP BY r.book_id
+            ORDER BY count(*) DESC, r.book_id";
         }
         $stmt = $this->_conn->prepare($sql);
         $stmt->execute();

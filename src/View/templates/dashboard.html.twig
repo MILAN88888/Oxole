@@ -32,7 +32,7 @@
         <div class="bookListing">
             <div class="recent-scroll">
                 {% for book in bookList %}
-                <div class="col col-md-3 recent-one" style="margin-left:20px;">
+                <div class="col col-md-3 recent-one" >
                     <div class="bookBox">
                         <a href="bookview.php?bookid={{ book.id }}">
                             <div class="bookCoverImg">
@@ -86,7 +86,7 @@
         <div class="bookListing">
             <div class="recent-scroll">
                 {% for book in mostPopularBook%}
-                <div class="col col-md-3 most-one" style="margin-left:20px;" onclick="window.location.href='bookview.php?bookid={{ book.id }}'">
+                <div class="col col-md-3 most-one" onclick="window.location.href='bookview.php?bookid={{ book.id }}'">
                     <div class="bookBox">
                         <a href="#">
                             <div class="bookCoverImg">
@@ -200,7 +200,8 @@
     </div>
 </section>
 {% endfor %}
-
+{% if mostUniqueGenre|length > 3 %}
 <div class="p-5 text-center">
     <a class="btn loadBtn" id="loadMore">Load More</a>
 </div>
+{% endif %}
